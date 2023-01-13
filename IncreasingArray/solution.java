@@ -10,24 +10,29 @@ public class solution{
 			System.err.println("Error");
 		}
 		Scanner sc = new Scanner(System.in);
+		// String st = sc.next();
+
 		int n = sc.nextInt();
-		int[] arr = new int[n-1];
-		for(int i=0; i<arr.length;i++ ){
-			arr[i] = sc.nextInt();
+		int[] arr= new int[n];
+
+		for(int i =0; i<n ;i++){
+			arr[i] = sc.nextInt();	
 		}
 
 
-		HashSet<Integer> hs = new HashSet<>();
-		for(int num : arr){
-			hs.add(num);
-		}
+		long step=0;
 
-		int ans =1;
-		while(hs.contains(ans)){
-			ans++;
+		for(int i=1; i<n;i++){
+			if(arr[i-1]<=arr[i]){
+				// skip;
+			}
+			else if(arr[i-1]>arr[i]){
+				step += arr[i-1]-arr[i];
+				arr[i] = arr[i-1];
+			}
 		}
-		System.out.print(ans);
 		
-		// System.out.print(" "+n);
+		
+		System.out.print(step);
 	}
 }

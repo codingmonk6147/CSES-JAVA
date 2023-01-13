@@ -10,24 +10,24 @@ public class solution{
 			System.err.println("Error");
 		}
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int[] arr = new int[n-1];
-		for(int i=0; i<arr.length;i++ ){
-			arr[i] = sc.nextInt();
-		}
+		String st = sc.next();
 
+		int i=0;
+		int j = 0;
 
-		HashSet<Integer> hs = new HashSet<>();
-		for(int num : arr){
-			hs.add(num);
+		HashSet<Character> hs = new HashSet<>();
+		int ans=0;
+		while(j<st.length()){
+			if(hs.contains(st.charAt(j))){
+				ans = Math.max(ans,j-i+1);
+				i=++j;
+			}else{
+				hs.add(st.charAt(j));
+			}
+			j++;
 		}
-
-		int ans =1;
-		while(hs.contains(ans)){
-			ans++;
-		}
-		System.out.print(ans);
 		
-		// System.out.print(" "+n);
+		
+		System.out.print(ans);
 	}
 }

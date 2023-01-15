@@ -62,104 +62,53 @@ public class solution{
 		// String st = sc.next();
 		FastReader sc = new FastReader();
 		int n = sc.nextInt();
-	   while(n-->0){
-	   	  int x = sc.nextInt();
-	   	  int y = sc.nextInt();
-	   	  System.out.println(findNum(x,y));
-	   	  
-	   }
+	    int[] arr= new int[n];
+	    for(int i =0; i<n;i++){
+	    	arr[i] = i+1;
+	    }
+	  long sum = ((long)n*(long)(n+1)/2);
+	  if( (sum/2)%2==0){
+	  			ArrayList<Integer> s1 = new ArrayList<Integer>();
+	  			ArrayList<Integer> s2 = new ArrayList<Integer>();
+	  			boolean[] visited = new boolean[n];
+	  			long divSum =sum/2;
 
+	  				for(int i=n-1 ;i>=0;i--){
+
+	  					if(divSum>=(long)arr[i]){
+	  						s1.add(arr[i]);
+	  					    visited[i] = true;
+	  					    divSum -= arr[i];
+	  					}
+	  					
+	  				}
+
+	  				for(int i=0;i<n;i++){
+	  					if(visited[i]==false){
+	  						s2.add(arr[i]);
+	  					}
+	  				}
+	  				System.out.println(s1.size());
+	  				for(int k : s1 ){
+	  					System.out.print(k+" ");
+	  				}
+	  				System.out.println();
+	  				System.out.println(s2.size());
+	  				for(int k : s2 ){
+	  					System.out.print(k+" ");
+	  				}
+	  }
+	  else{
+	  	System.out.println("NO");
+	  }
+       
 		
 		
 		
 		// System.out.print(step);
 	}
      
+   
 
-     public static long findNum(int x, int y){
-     	if(x==y){
-     		long num = ((long) x * (long)(x-1))+1;
-     		return num;
-     	}
 
-     	else if(x<y){
-     		long num = ((long)y * (long)(y-1))+1;
-     		if(y%2!=0){
-     			num = num + (y-x);
-     			
-     		}
-     		else{
-     			num = num - (y-x);
-     			
-     		}
-     		return num;
-     	}
-     	else if(x>y){
-     		long num = ((long)x * (long)(x-1))+1;
-     		if(x%2!=0){
-     			 num = num + (y-x);
-     		
-     		}
-     		else{
-     			num = num - (y-x);
-     			
-     		}
-     		return num;
-     	}
-     	return 0;
-     }
-
-	// TLE --> optimisation required
-	// public static long findNum(int x, int y){
-	// 	if(x<y){
-				
-	// 			if(y%2==0){
-	// 				long num = (long)y*(long)y;
-	// 				while(y>0){
-	// 					num--;
-	// 					y--;
-	// 				}
-	// 				while(x>1){
-	// 					num--;
-	// 					x--;
-	// 				}
-	// 				return num;
-	// 			}
-	// 			else{
-	// 				long num = (long)y*(long)y;
-	// 				while(x>1){
-	// 					num--;
-	// 					x--;
-	// 				}
-	// 				return num;
-	// 			}
-	// 	}
-	// 	else if (x>y){
-			
-	// 		if(x%2==0){
-	// 				long num = (long)x*(long)x;
-	// 				while(y>1){
-	// 					num--;
-	// 					y--;
-	// 				}
-	// 				return num;
-	// 		}
-	// 		else{
-	// 				long num = (long)x*(long)x;
-	// 				while(x>0){
-	// 					num--;
-	// 					x--;
-	// 				}
-	// 				while(y>0){
-	// 						num--;
-	// 						y--;
-	// 				}
-	// 				return num;
-	// 		}
-	// 	}
-	// 	else{
-	// 		long num = ((long)x*(long)(x-1))+1;
-	// 		return num;
-	// 	}
-	// }
 }
